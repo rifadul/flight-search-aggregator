@@ -2,7 +2,7 @@
 
 import { ErrorState } from '@/components/shared';
 
-export default function Error({ reset }: { reset: () => void }) {
+export default function Error() {
     return (
         <ErrorState
             title="Something went wrong"
