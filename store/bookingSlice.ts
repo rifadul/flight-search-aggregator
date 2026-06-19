@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Flight } from '@/types/flight';
 import { Passenger } from '@/types/booking';
+import { FlightSearchParams } from '@/types/search';
 
 export interface BookingState {
     selectedFlight: Flight | null;
     passenger: Passenger | null;
     bookingId: string | null;
+    searchCriteria: FlightSearchParams | null;
     status: 'idle' | 'loading' | 'success' | 'error';
 }
 
@@ -13,6 +15,7 @@ const initialState: BookingState = {
     selectedFlight: null,
     passenger: null,
     bookingId: null,
+    searchCriteria: null,
     status: 'idle',
 };
 
@@ -34,6 +37,13 @@ export const bookingSlice = createSlice({
             state.status = 'success';
         },
 
+        setSearchCriteria: (
+            state,
+            action: PayloadAction<FlightSearchParams>,
+        ) => {
+            state.searchCriteria = action.payload;
+        },
+
         clearBooking: (state) => {
             state.selectedFlight = null;
             state.passenger = null;
@@ -43,7 +53,12 @@ export const bookingSlice = createSlice({
     },
 });
 
-export const { selectFlight, setPassenger, setBookingSuccess, clearBooking } =
-    bookingSlice.actions;
+export const {
+    selectFlight,
+    setPassenger,
+    setBookingSuccess,
+    clearBooking,
+    setSearchCriteria,
+} = bookingSlice.actions;
 
 export default bookingSlice.reducer;

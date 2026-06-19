@@ -92,6 +92,9 @@ export function FlightCard({ flight }: FlightCardProps) {
                             <p className="text-2xl font-bold text-primary">
                                 {formatCurrency(flight.price)}
                             </p>
+                            <p className="text-[0.625rem] tracking-wide text-muted-foreground">
+                                Per Passenger
+                            </p>
                         </div>
 
                         <Button size="lg" onClick={handleSelectFlight}>

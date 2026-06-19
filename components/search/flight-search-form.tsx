@@ -20,9 +20,12 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
+import { setSearchCriteria } from '@/store/bookingSlice';
+import { useAppDispatch } from '@/store/hooks';
 
 export function FlightSearchForm() {
     const router = useRouter();
+    const dispatch = useAppDispatch();
 
     const {
         control,
@@ -50,6 +53,15 @@ export function FlightSearchForm() {
             date: values.date,
             passengers: String(values.passengers),
         });
+
+        dispatch(
+            setSearchCriteria({
+                origin: values.origin,
+                destination: values.destination,
+                date: values.date,
+                passengers: values.passengers,
+            }),
+        );
 
         router.push(`/flights?${params.toString()}`);
     };

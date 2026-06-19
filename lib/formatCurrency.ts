@@ -2,6 +2,7 @@ export function formatCurrency(amount: number) {
     return new Intl.NumberFormat('en-BD', {
         style: 'currency',
         currency: 'BDT',
-        maximumFractionDigits: 0,
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
     }).format(amount);
 }

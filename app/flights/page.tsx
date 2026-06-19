@@ -27,7 +27,7 @@ export default async function FlightsPage({ searchParams }: FlightsPageProps) {
             <div className="space-y-8 py-10">
                 <PageHeader
                     title="Available Flights"
-                    description={`${origin} → ${destination} • ${flights.length} flights found`}
+                    description="Compare and choose the best option for your journey."
                     showBackButton
                 />
                 <FlightsContent
