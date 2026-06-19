@@ -21,13 +21,6 @@ export async function getFlights(
         );
     }
 
-    // // 3. Filter by Departure Date (Using full timestamp string matching)
-    // if (params?.date) {
-    //     filteredFlights = filteredFlights.filter((flight) =>
-    //         flight.departureTime.startsWith(params.date || ''),
-    //     );
-    // }
-
     // 3. Filter by Departure Date
     if (params?.date) {
         const searchDate = params.date;

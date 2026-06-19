@@ -28,68 +28,73 @@ export function FlightCard({ flight }: FlightCardProps) {
     };
 
     return (
-        <Card>
-            {' '}
+        <Card className="transition-all hover:shadow-lg">
             <CardContent className="p-6">
-                {' '}
-                <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-                    {' '}
-                    <div className="space-y-4">
-                        {' '}
-                        <div>
-                            {' '}
-                            <p className="font-semibold">{airline?.name} </p>
-                            <p className="text-sm text-muted-foreground">
-                                {flight.flightNumber}
-                            </p>
-                        </div>
-                        <div className="flex items-center gap-4">
+                <div className="grid gap-6 lg:grid-cols-[1fr_auto]">
+                    <div>
+                        <div className="mb-4 flex items-center gap-2">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 ">
+                                ✈
+                            </div>
+
                             <div>
-                                <p className="font-semibold">
-                                    {new Date(
-                                        flight.departureTime,
-                                    ).toLocaleTimeString([], {
-                                        hour: '2-digit',
-                                        minute: '2-digit',
-                                    })}
-                                </p>
+                                <p className="font-semibold">{airline?.name}</p>
 
                                 <p className="text-sm text-muted-foreground">
+                                    {flight.flightNumber}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="flex items-center gap-6">
+                            <div>
+                                <p className="text-xl font-bold">
+                                    Departure Time
+                                </p>
+
+                                <p className="text-muted-foreground">
                                     {origin?.code}
                                 </p>
                             </div>
 
-                            <div className="text-sm text-muted-foreground">
-                                {formatDuration(flight.duration)}
+                            <div className="flex flex-1 flex-col items-center">
+                                <p className="text-sm text-muted-foreground">
+                                    {formatDuration(flight.duration)}
+                                </p>
+
+                                <div className="h-px w-full bg-border" />
+
+                                <p className="text-xs text-muted-foreground">
+                                    {flight.stops === 0
+                                        ? 'Non-stop'
+                                        : `${flight.stops} Stop`}
+                                </p>
                             </div>
 
                             <div>
-                                <p className="font-semibold">
-                                    {new Date(
-                                        flight.arrivalTime,
-                                    ).toLocaleTimeString([], {
-                                        hour: '2-digit',
-                                        minute: '2-digit',
-                                    })}
+                                <p className="text-xl font-bold">
+                                    Arrival Time
                                 </p>
 
-                                <p className="text-sm text-muted-foreground">
+                                <p className="text-muted-foreground">
                                     {destination?.code}
                                 </p>
                             </div>
                         </div>
-                        <p className="text-sm text-muted-foreground">
-                            {flight.stops === 0
-                                ? 'Non-stop'
-                                : `${flight.stops} Stop`}
-                        </p>
                     </div>
-                    <div className="flex flex-col items-start gap-4 lg:items-end">
-                        <p className="text-2xl font-bold">
-                            {formatCurrency(flight.price)}
-                        </p>
 
-                        <Button onClick={handleSelectFlight}>
+                    <div className="flex flex-col justify-center gap-3 lg:items-end">
+                        <div>
+                            <p className="text-xs uppercase tracking-wide text-muted-foreground">
+                                Starting From
+                            </p>
+
+                            <p className="text-2xl font-bold text-primary">
+                                {formatCurrency(flight.price)}
+                            </p>
+                        </div>
+
+                        <Button size="lg" onClick={handleSelectFlight}>
                             Select Flight
                         </Button>
                     </div>

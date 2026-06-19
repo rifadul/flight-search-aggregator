@@ -1,22 +1,23 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { Flight } from '@/types/flight';
 import { SortOption } from '@/types/filter';
 import { FlightList } from './flight-list';
-import { SortDropdown } from './sort-dropdown';
-import { AirlineFilter } from './airline-filter';
-import { StopsFilter } from './stops-filter';
 
 interface FlightResultsProps {
     flights: Flight[];
+    airline: string;
+    stops: string;
+    sortBy: SortOption;
 }
 
-export function FlightResults({ flights }: FlightResultsProps) {
-    const [sortBy, setSortBy] = useState<SortOption>('price-asc');
-    const [airline, setAirline] = useState('all');
-    const [stops, setStops] = useState('all');
-
+export function FlightResults({
+    flights,
+    airline,
+    stops,
+    sortBy,
+}: FlightResultsProps) {
     const processedFlights = useMemo(() => {
         let result = [...flights];
 
@@ -50,14 +51,6 @@ export function FlightResults({ flights }: FlightResultsProps) {
 
     return (
         <div className="space-y-6">
-            <div className="flex flex-wrap justify-end gap-4">
-                <AirlineFilter value={airline} onChange={setAirline} />
-
-                <StopsFilter value={stops} onChange={setStops} />
-
-                <SortDropdown value={sortBy} onChange={setSortBy} />
-            </div>
-
             <FlightList flights={processedFlights} />
         </div>
     );

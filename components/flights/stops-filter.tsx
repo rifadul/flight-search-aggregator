@@ -7,6 +7,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
+import { FilterSelect } from '../shared/FilterSelect';
 
 interface StopsFilterProps {
     value: string;
@@ -15,19 +16,21 @@ interface StopsFilterProps {
 
 export function StopsFilter({ value, onChange }: StopsFilterProps) {
     return (
-        <Select value={value} onValueChange={onChange}>
-            {' '}
-            <SelectTrigger className="w-55">
+        <FilterSelect label="Stops">
+            <Select value={value} onValueChange={onChange}>
                 {' '}
-                <SelectValue placeholder="All Flights" />{' '}
-            </SelectTrigger>
-            <SelectContent>
-                <SelectItem value="all">All Flights</SelectItem>
+                <SelectTrigger className="w-55">
+                    {' '}
+                    <SelectValue placeholder="All Flights" />{' '}
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectItem value="all">All Flights</SelectItem>
 
-                <SelectItem value="0">Non-stop</SelectItem>
+                    <SelectItem value="0">Non-stop</SelectItem>
 
-                <SelectItem value="1">1 Stop</SelectItem>
-            </SelectContent>
-        </Select>
+                    <SelectItem value="1">1 Stop</SelectItem>
+                </SelectContent>
+            </Select>
+        </FilterSelect>
     );
 }

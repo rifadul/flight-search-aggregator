@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { PageContainer, PageHeader } from '@/components/shared';
 import { BookingForm } from '@/components/booking/booking-form';
 import { BookingSummary } from '@/components/booking/booking-summary';
-
 import { useAppSelector } from '@/store/hooks';
 
 export default function BookingPage() {
@@ -31,6 +30,7 @@ export default function BookingPage() {
                 <PageHeader
                     title="Complete Your Booking"
                     description="Review your flight and enter passenger information."
+                    showBackButton
                 />
 
                 <div className="grid gap-8 lg:grid-cols-2">

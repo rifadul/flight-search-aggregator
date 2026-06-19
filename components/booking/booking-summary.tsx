@@ -1,7 +1,5 @@
 import { Flight } from '@/types/flight';
-
 import { Card, CardContent } from '@/components/ui/card';
-
 import { formatCurrency } from '@/lib/formatCurrency';
 import { formatDuration } from '@/lib/formatDuration';
 import { getAirline } from '@/lib/getAirline';
@@ -19,7 +17,7 @@ export function BookingSummary({ flight }: BookingSummaryProps) {
     const destination = getAirport(flight.destinationCode);
 
     return (
-        <Card>
+        <Card className="sticky top-6">
             {' '}
             <CardContent className="p-6">
                 {' '}

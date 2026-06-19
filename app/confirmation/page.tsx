@@ -1,12 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-
 import { PageContainer, PageHeader } from '@/components/shared';
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-
 import { useAppSelector } from '@/store/hooks';
 
 export default function ConfirmationPage() {
