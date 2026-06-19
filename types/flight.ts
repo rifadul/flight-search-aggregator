@@ -1,50 +1,43 @@
 export interface Airport {
-  code: string;
-  city: string;
-  name: string;
+    code: string;
+    city: string;
+    name: string;
 }
 
 export interface Airline {
-  id: string;
-  name: string;
-  logo: string;
+    id: string;
+    name: string;
+    logo: string;
 }
 
-export type CabinClass =
-  | "economy"
-  | "premium-economy"
-  | "business";
+export type CabinClass = 'economy' | 'premium-economy' | 'business';
 
-  export interface Flight {
-  id: string;
+export interface Flight {
+    id: string;
 
-  flightNumber: string;
+    flightNumber: string;
 
-  airline: Airline;
+    airlineId: string;
 
-  origin: Airport;
+    originCode: string;
 
-  destination: Airport;
+    destinationCode: string;
 
-  departureTime: string;
+    departureTime: string;
 
-  arrivalTime: string;
+    arrivalTime: string;
 
-  duration: number;
+    duration: number;
 
-  stops: number;
+    stops: number;
 
-  availableSeats: number;
+    availableSeats: number;
 
-  cabinClass: CabinClass;
+    cabinClass: CabinClass;
 
-  baggage: {
-    cabin: string;
-    checked: string;
-  };
+    baggageCabin: string;
 
-  price: {
-    amount: number;
-    currency: "BDT";
-  };
+    baggageChecked: string;
+
+    price: number;
 }
