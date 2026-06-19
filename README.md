@@ -1,36 +1,157 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Flight Search Aggregator
+
+A modern flight search and booking application built with Next.js, TypeScript, Redux Toolkit, and shadcn/ui.
+
+This project was developed as a take-home assignment for the Senior Software Engineer (Frontend) position at iBox Lab.
+
+---
+
+## Features
+
+### Flight Search
+
+- Search flights by origin, destination, departure date, and passenger count
+- Display available flight options
+- Empty state handling for no results
+
+### Sorting & Filtering
+
+- Sort by:
+    - Lowest Price
+    - Highest Price
+    - Shortest Duration
+
+- Filter by:
+    - Airline
+    - Number of Stops
+
+### Booking Flow
+
+- Select a flight
+- Review flight details
+- Complete passenger information
+- Submit booking
+- View booking confirmation
+
+### User Experience
+
+- Responsive design
+- Loading states
+- Error states
+- Form validation using Zod
+- Accessible UI components using shadcn/ui
+
+---
+
+## Tech Stack
+
+### Framework
+
+- Next.js 16 (App Router)
+- React 19
+- TypeScript
+
+### Styling
+
+- Tailwind CSS v4
+- shadcn/ui
+- Lucide Icons
+
+### State Management
+
+- Redux Toolkit
+- React Redux
+
+### Forms & Validation
+
+- React Hook Form
+- Zod
+
+### Mock API
+
+- Next.js Route Handlers
+- Local JSON dataset
+
+---
+
+## Project Structure
+
+```text
+src
+├── app
+├── components
+├── constants
+├── data
+├── lib
+├── schemas
+├── services
+├── store
+├── types
+└── utils
+```
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Install Dependencies
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Run Development Server
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Production Build
 
-## Learn More
+```bash
+yarn build
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Start Production Server
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+yarn start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Key Engineering Decisions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Mock API Layer
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Instead of directly consuming JSON files from UI components, a service layer and API routes were introduced to simulate a real-world backend architecture.
+
+### Redux Usage
+
+Redux Toolkit is used only for booking-related state management. Search, sorting, and filtering remain component-local because they are page-specific concerns.
+
+### Client-Side Filtering & Sorting
+
+Given the small dataset size, filtering and sorting are performed on the client to keep the implementation simple while maintaining responsiveness.
+
+### Validation
+
+All user inputs are validated using Zod schemas integrated with React Hook Form.
+
+---
+
+## Future Improvements
+
+- Server-side pagination
+- Real backend integration
+- Authentication & user accounts
+- Multi-city flight search
+- Price range filtering
+- Flight comparison
+- Booking history
+
+---
+
+## Author
+
+Rifadul Islam Khushnobish Siam
