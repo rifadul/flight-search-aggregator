@@ -1,3 +1,5 @@
+'use client';
+
 import { Flight } from '@/types/flight';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -5,17 +7,25 @@ import { formatCurrency } from '@/lib/formatCurrency';
 import { formatDuration } from '@/lib/formatDuration';
 import { getAirline } from '@/lib/getAirline';
 import { getAirport } from '@/lib/getAirport';
+import { useRouter } from 'next/navigation';
+import { useAppDispatch } from '@/store/hooks';
+import { selectFlight } from '@/store/bookingSlice';
 
 interface FlightCardProps {
     flight: Flight;
 }
 
 export function FlightCard({ flight }: FlightCardProps) {
+    const router = useRouter();
+    const dispatch = useAppDispatch();
     const airline = getAirline(flight.airlineId);
-
     const origin = getAirport(flight.originCode);
-
     const destination = getAirport(flight.destinationCode);
+
+    const handleSelectFlight = () => {
+        dispatch(selectFlight(flight));
+        router.push('/booking');
+    };
 
     return (
         <Card>
@@ -79,7 +89,9 @@ export function FlightCard({ flight }: FlightCardProps) {
                             {formatCurrency(flight.price)}
                         </p>
 
-                        <Button>Select Flight</Button>
+                        <Button onClick={handleSelectFlight}>
+                            Select Flight
+                        </Button>
                     </div>
                 </div>
             </CardContent>
