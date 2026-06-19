@@ -16,19 +16,21 @@ This project was developed as a take-home assignment for the Senior Software Eng
 
 ### Sorting & Filtering
 
-- Sort by:
-    - Lowest Price
-    - Highest Price
-    - Shortest Duration
+#### Sort By
 
-- Filter by:
-    - Airline
-    - Number of Stops
+- Lowest Price
+- Highest Price
+- Shortest Duration
+
+#### Filter By
+
+- Airline
+- Number of Stops
 
 ### Booking Flow
 
 - Select a flight
-- Review flight details
+- Review flight details and pricing summary
 - Complete passenger information
 - Submit booking
 - View booking confirmation
@@ -55,7 +57,7 @@ This project was developed as a take-home assignment for the Senior Software Eng
 
 - Tailwind CSS v4
 - shadcn/ui
-- Lucide Icons
+- Lucide React
 
 ### State Management
 
@@ -72,22 +74,38 @@ This project was developed as a take-home assignment for the Senior Software Eng
 - Next.js Route Handlers
 - Local JSON dataset
 
+### Development & Testing
+
+- Vitest
+- React Testing Library
+
 ---
 
 ## Project Structure
 
 ```text
-src
-├── app
-├── components
-├── constants
-├── data
-├── lib
-├── schemas
-├── services
-├── store
-├── types
-└── utils
+app
+├── api
+├── booking
+├── confirmation
+├── flights
+└── page.tsx
+
+components
+├── booking
+├── flights
+├── search
+├── shared
+└── ui
+
+constants
+data
+lib
+schemas
+services
+store
+tests
+types
 ```
 
 ---
@@ -120,6 +138,28 @@ yarn start
 
 ---
 
+## Testing
+
+Run tests in watch mode:
+
+```bash
+yarn test
+```
+
+Run tests once:
+
+```bash
+yarn test:run
+```
+
+Current test coverage includes:
+
+- Redux state management
+- Utility functions
+- Flight search validation schema
+
+---
+
 ## Key Engineering Decisions
 
 ### Mock API Layer
@@ -128,7 +168,7 @@ Instead of directly consuming JSON files from UI components, a service layer and
 
 ### Redux Usage
 
-Redux Toolkit is used only for booking-related state management. Search, sorting, and filtering remain component-local because they are page-specific concerns.
+Redux Toolkit is used only for booking-related state management. Search criteria, selected flight information, and booking data are shared across multiple pages, while sorting and filtering remain component-local because they are page-specific concerns.
 
 ### Client-Side Filtering & Sorting
 
@@ -140,15 +180,25 @@ All user inputs are validated using Zod schemas integrated with React Hook Form.
 
 ---
 
+## Assignment Scope
+
+This project uses a mock API layer and local dataset to simulate a production-ready flight search and booking workflow.
+
+The focus of the implementation was frontend architecture, state management, form validation, testing, responsive design, and user experience.
+
+---
+
 ## Future Improvements
 
 - Server-side pagination
 - Real backend integration
-- Authentication & user accounts
+- Authentication and user accounts
 - Multi-city flight search
 - Price range filtering
 - Flight comparison
 - Booking history
+- Saved searches
+- Flight alerts
 
 ---
 

@@ -124,12 +124,13 @@ Used for:
 
 - Selected Flight
 - Passenger Information
+- Search Criteria
 - Booking Status
 - Booking Confirmation
 
 Reason:
 
-These states are shared across multiple pages during the booking flow.
+These states are shared across multiple pages during the booking flow. Storing them centrally avoids prop drilling and allows the booking and confirmation pages to access the data required to complete the user journey.
 
 ---
 
@@ -177,6 +178,20 @@ This ensures users always receive meaningful feedback regardless of application 
 
 ---
 
+## Testing Strategy
+
+The application includes unit tests for:
+
+- Redux reducers and business logic
+- Utility functions
+- Zod validation schemas
+
+Vitest was selected due to its fast execution speed, modern TypeScript support, and seamless integration with React applications.
+
+The testing approach focuses on validating business logic and data integrity rather than testing third-party UI components.
+
+---
+
 ## Scalability Considerations
 
 The architecture allows future support for:
@@ -195,7 +210,7 @@ without requiring significant architectural changes.
 
 ## Trade-Offs
 
-### Native Date Input
+### Native Date Input / Lightweight UI Components
 
 A native HTML date input was chosen over a custom date picker to reduce complexity and focus on delivering core booking functionality.
 
